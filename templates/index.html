@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+    <h1> Car Price Predicator</h1>
+
+    <form action="/predict" method="post">
+
+        <label>Car Name</label>
+        <input type="text" name="name" placeholder="Enter Car Name" required>
+
+        <label>Company</label>
+        <input type="text" name="company" placeholder="Enter Company Name" required>
+
+        <label>Year</label>
+        <input type="number" name="year" placeholder="Enter Manufacturing Year" required>
+
+        <label>Kilometers Driven</label>
+        <input type="number" name="kms_driven" placeholder="Enter Kilometers Driven" required>
+
+        <label>Fuel Type</label>
+        <select name="fuel_type" required>
+            <option value="">Select Fuel Type</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="LPG">LPG</option>
+        </select>
+
+        <button class="btn" type="submit">Predict Price</button>
+
+    </form>
+
+  {% if prediction_text %}
+    <div class="result" id="resultBox">
+        {{ prediction_text }}
+    </div>
+
+    <script>
+        // Prevent form resubmission on page refresh
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+
+        // Auto hide result after 5 seconds
+        setTimeout(function(){
+            document.getElementById("resultBox").style.display = "none";
+        }, 10000);
+    </script>
+
+{% endif %}
+
+
+
+</div>
+
+<footer>
+    <p>Machine Learning based Car Price Predictor</p>
+</footer>
+
+</body>
+</html>

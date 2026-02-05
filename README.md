@@ -9,7 +9,7 @@ This is a Machine Learning based web application that predicts the price of a us
 - One-Hot Encoding for categorical data
 - Flask Web Application
 - HTML & CSS Frontend
-- Real-time price prediction
+
 
 ## Technologies Used
 
